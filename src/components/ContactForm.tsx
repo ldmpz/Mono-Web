@@ -71,13 +71,13 @@ export default function ContactForm() {
 
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
     };
 
     const floatingImage = {
         animate: {
             y: [0, -15, 0],
-            transition: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            transition: { duration: 6, repeat: Infinity }
         }
     };
 
