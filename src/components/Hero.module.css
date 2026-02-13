@@ -1,0 +1,130 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, #1c1f26 0%, #0b0f14 100%);
+}
+
+/* Subtle Bottom Transition */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--bg-primary) 0%, transparent 100%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes auroraFloat {
+    0% {
+        transform: translateY(0) scale(1) rotate(-1deg);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-40px) scale(1.2) rotate(1deg);
+        opacity: 1;
+    }
+}
+
+/* Background Grid Effect with Deep Fading */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(31, 107, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 107, 255, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 50%, rgba(0, 0, 0, 0.4) 80%, transparent 100%);
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(31, 107, 255, 0.1);
+    border: 1px solid rgba(31, 107, 255, 0.3);
+    border-radius: 20px;
+    color: var(--accent-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.headline {
+    font-family: var(--font-outfit, sans-serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    /* Responsive typography */
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.subheadline {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ctaGroup {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btnSecondary {
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btnSecondary:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
