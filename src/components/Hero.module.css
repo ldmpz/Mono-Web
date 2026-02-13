@@ -1,7 +1,9 @@
 .hero {
     position: relative;
     height: 100vh;
-    min-height: 700px;
+    /* Fallback */
+    height: 100dvh;
+    min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,7 +78,7 @@
 
 .headline {
     font-family: var(--font-outfit, sans-serif);
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2rem, 5vw, 4.5rem);
     /* Responsive typography */
     line-height: 1.1;
     font-weight: 700;

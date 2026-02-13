@@ -84,4 +84,8 @@
     .content {
         margin: 0 auto;
     }
+
+    .metricsGrid {
+        grid-template-columns: 1fr;
+    }
 }

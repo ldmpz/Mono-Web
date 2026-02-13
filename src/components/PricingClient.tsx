@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 import styles from "./Pricing.module.css";
 import { Check } from "lucide-react";
+import Image from "next/image";
 
 interface PricingCard {
     id: string;
@@ -19,38 +19,8 @@ interface PricingClientProps {
 }
 
 export default function PricingClient({ cards }: PricingClientProps) {
-    const containerRef = useRef<HTMLElement>(null);
-    const [isVisible, setIsVisible] = useState(true);
-    const lastScrollY = useRef(0);
-
-    const { scrollY } = useScroll();
-
-    // Detect scroll direction
-    useMotionValueEvent(scrollY, "change", (latest) => {
-        const direction = latest > lastScrollY.current ? "down" : "up";
-        if (direction === "down") {
-            setIsVisible(true);
-        } else {
-            setIsVisible(false);
-        }
-        lastScrollY.current = latest;
-    });
-
-    // Parallax effect for the monkey hands divider (keeping it subtle now)
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
-
-    const yParallax = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-    const springY = useSpring(yParallax, {
-        stiffness: 200,
-        damping: 30,
-        mass: 0.5 // Menor masa para que sea más ágil
-    });
-
     return (
-        <section id="pricing" className={styles.section} ref={containerRef}>
+        <section id="pricing" className={styles.section}>
             <div className="container">
 
                 {/* Promotional Banner */}
@@ -75,27 +45,88 @@ export default function PricingClient({ cards }: PricingClientProps) {
 
                 <motion.div
                     className={styles.wingsDivider}
-                    animate={{
-                        opacity: isVisible ? 1 : 0,
-                        translateY: isVisible ? 0 : 80, // Más desplazamiento para que la caída lenta se aprecie mejor
-                        scale: isVisible ? 1 : 0.9
-                    }}
-                    transition={{
-                        duration: isVisible ? 0.1 : 1.5, // Instantáneo al bajar, ultra-lento al subir
-                        ease: isVisible ? "circOut" : "linear" // Lineal al subir para que no se acelere al final
-                    }}
-                    style={{
-                        y: springY,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        position: "relative",
-                        zIndex: 5
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={{
+                        hidden: { opacity: 0, y: 30 },
+                        visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                                duration: 0.8,
+                                staggerChildren: 0.2
+                            }
+                        }
                     }}
                 >
-                    <div className={styles.wingLeft}></div>
-                    <div className={styles.dividerTitle}>Páginas Web</div>
-                    <div className={styles.wingRight}></div>
+                    <motion.div
+                        className={styles.wingLeft}
+                        variants={{
+                            hidden: { x: -50, opacity: 0, rotate: -10 },
+                            visible: {
+                                x: 0,
+                                opacity: 1,
+                                rotate: 10,
+                                transition: { type: "spring", stiffness: 100, damping: 15 }
+                            }
+                        }}
+                    >
+                        <Image
+                            src="/Manos.png"
+                            alt=""
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            className={styles.wingImg}
+                            style={{ left: 0, width: 'auto', height: '100%' }}
+                        />
+                    </motion.div>
+
+                    <motion.div
+                        className={styles.dividerTitle}
+                        variants={{
+                            hidden: { scale: 0.8, opacity: 0 },
+                            visible: {
+                                scale: 1,
+                                opacity: 1,
+                                transition: { type: "spring", stiffness: 200, damping: 12 }
+                            }
+                        }}
+                        animate={{
+                            textShadow: [
+                                "0 0 10px rgba(31, 107, 255, 0)",
+                                "0 0 20px rgba(31, 107, 255, 0.5)",
+                                "0 0 10px rgba(31, 107, 255, 0)"
+                            ]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+                    >
+                        Páginas Web
+                    </motion.div>
+
+                    <motion.div
+                        className={styles.wingRight}
+                        variants={{
+                            hidden: { x: 50, opacity: 0, rotate: 10 },
+                            visible: {
+                                x: 0,
+                                opacity: 1,
+                                rotate: -10,
+                                transition: { type: "spring", stiffness: 100, damping: 15 }
+                            }
+                        }}
+                    >
+                        <Image
+                            src="/Manos.png"
+                            alt=""
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            className={styles.wingImg}
+                            style={{ left: '-65px', width: 'auto', height: '100%' }}
+                        />
+                    </motion.div>
                 </motion.div>
 
                 <div className={styles.grid}>

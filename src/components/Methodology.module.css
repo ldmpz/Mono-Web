@@ -91,24 +91,24 @@
     }
 
     .timeline::before {
-        top: 0;
-        left: 40px;
-        width: 2px;
-        height: 100%;
-        background: linear-gradient(180deg,
-                var(--bg-primary) 0%,
-                var(--accent-secondary) 50%,
-                var(--bg-primary) 100%);
+        left: 20px;
+        /* Shift line closer to edge */
     }
 
     .step {
         text-align: left;
-        padding-left: 100px;
+        padding-left: 60px;
+        /* Reduce padding */
     }
 
     .stepNumber {
         position: absolute;
-        left: 0;
+        left: -10px;
+        /* Align number with new line position */
         margin: 0;
+        width: 60px;
+        /* Smaller number circle */
+        height: 60px;
+        font-size: 1.2rem;
     }
 }

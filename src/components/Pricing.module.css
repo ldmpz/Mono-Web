@@ -49,7 +49,7 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 4rem;
     padding: 2rem 1rem 0;
 }
@@ -145,7 +145,10 @@
     justify-content: center;
     gap: 0;
     /* No gap to allow overlap */
+    /* No gap to allow overlap */
     margin: 3rem 0;
+    position: relative;
+    z-index: 5;
 }
 
 .dividerTitle {
@@ -165,31 +168,33 @@
     /* Ahora debajo de las manos */
 }
 
+/* Wings with Next/Image optimization */
 .wingLeft,
 .wingRight {
     width: 65px;
     height: 80px;
-    background-image: url('/Manos.png');
-    background-size: 130px 80px;
-    background-repeat: no-repeat;
     position: relative;
     z-index: 2;
-    /* Ahora arriba del cartel */
+    overflow: hidden;
+    /* Masking the sprite */
 }
 
 .wingLeft {
-    background-position: left center;
     margin-right: -42px;
-    /* Más overlap en la izquierda */
-    transform: rotate(10deg);
-    /* Rotación más marcada */
 }
 
 .wingRight {
-    background-position: right center;
     margin-left: -48px;
-    /* Aún más overlap en la derecha como pediste */
-    transform: rotate(-10deg);
+}
+
+.wingImg {
+    position: absolute;
+    top: 0;
+    max-width: none;
+    /* Prevent responsive shrinking inside container */
+    height: 100%;
+    width: auto;
+    /* Maintain aspect ratio based on height? No, we know the size */
 }
 
 @media (max-width: 900px) {
@@ -206,6 +211,18 @@
         top: 0;
         transform: none;
         margin-bottom: 2rem;
+        left: 0;
+        right: 0;
+        /* Center it effectively */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ribbonMain {
+        width: auto;
+        font-size: 1.5rem;
+        /* Smaller font on mobile */
     }
 
     .promoContent {

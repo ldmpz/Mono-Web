@@ -17,6 +17,12 @@
     font-weight: 700;
 }
 
+@media (max-width: 768px) {
+    .ctaTitle {
+        font-size: 2rem;
+    }
+}
+
 .ctaDesc {
     color: var(--text-secondary);
     font-size: 1.25rem;
