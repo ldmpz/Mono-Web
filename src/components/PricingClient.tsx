@@ -20,7 +20,7 @@ interface PricingClientProps {
 
 export default function PricingClient({ cards }: PricingClientProps) {
     return (
-        <section id="pricing" className={styles.section}>
+        <section id="servicios" className={styles.section}>
             <div className="container">
 
                 {/* Promotional Banner */}
@@ -154,7 +154,7 @@ export default function PricingClient({ cards }: PricingClientProps) {
                                     ))}
                                 </ul>
 
-                                <a href="#contact" className={`btn-primary ${styles.cardButton}`}>
+                                <a href="#contacto" className={`btn-primary ${styles.cardButton}`}>
                                     Comenzar
                                 </a>
                             </div>

@@ -28,7 +28,7 @@ const steps = [
 
 export default function Methodology() {
     return (
-        <section id="methodology" className={styles.section}>
+        <section id="metodologia" className={styles.section}>
             <div className="container">
                 <div className={styles.header}>
                     <h2 className={`heading-lg ${styles.title}`}>Metodología de <span className="text-gradient">Impacto</span></h2>

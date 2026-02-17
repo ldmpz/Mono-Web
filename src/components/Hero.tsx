@@ -7,7 +7,7 @@ import TextReveal from "./TextReveal";
 
 export default function Hero() {
     return (
-        <section className={styles.hero}>
+        <section id="inicio" className={styles.hero}>
             <ParticleBackground />
             <div className={styles.content}>
                 <div className={styles.badge}>
@@ -26,10 +26,10 @@ export default function Hero() {
                 </p>
 
                 <div className={styles.ctaGroup}>
-                    <Link href="#contact" className="btn-primary">
+                    <Link href="#contacto" className="btn-primary">
                         Agendar Diagnóstico
                     </Link>
-                    <Link href="#services" className={styles.btnSecondary}>
+                    <Link href="#servicios" className={styles.btnSecondary}>
                         Explorar Soluciones
                     </Link>
                 </div>

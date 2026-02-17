@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--nav-height);
+    height: 80px;
     z-index: 1000;
     background: rgba(11, 15, 20, 0.5);
     backdrop-filter: blur(12px);
@@ -12,8 +12,9 @@
 }
 
 .scrolled {
-    background: rgba(11, 15, 20, 0.85);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(11, 15, 20, 0.95);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    height: 70px;
 }
 
 .container {
@@ -21,42 +22,111 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    max-width: var(--max-width);
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 .logo {
     font-family: var(--font-sans);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.5rem;
     letter-spacing: -0.02em;
     color: var(--text-primary);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.2rem;
+    position: relative;
+    z-index: 10;
 }
 
 .logoHighlight {
     color: var(--accent-primary);
 }
 
+/* Nav Wrapper */
+.navWrapper {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .navLinks {
     display: flex;
-    gap: 2.5rem;
+    gap: 0;
+    /* Gap handled by padding */
     list-style: none;
+    height: 100%;
+    position: relative;
+}
+
+.navItem {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
 }
 
 .navLink {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.2s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
 }
 
-.navLink:hover {
-    color: var(--text-primary);
+.navItem:hover .navLink,
+.navLink.active {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* The Hanging Indicator */
+.indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.indicatorTriangle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    /* Width of the top of the triangle base */
+    height: 40px;
+    /* Height of the triangle "tooth" */
+    background: var(--accent-primary);
+    /* Cyan/Blue */
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    box-shadow: 0 0 20px var(--accent-primary);
+    filter: drop-shadow(0 0 10px var(--accent-primary));
+}
+
+/* Optional glow aura behind/around */
+.indicatorGlow {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 60px;
+    background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+    opacity: 0.4;
+    filter: blur(10px);
 }
 
 .actions {
@@ -66,13 +136,13 @@
 }
 
 .ctaButton {
-    background: var(--accent-primary);
-    color: #fff;
-    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--accent-primary);
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--accent-primary);
     border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: none;
+    font-size: 0.85rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
@@ -80,12 +150,83 @@
 }
 
 .ctaButton:hover {
-    background: var(--accent-secondary);
-    box-shadow: 0 0 15px rgba(31, 107, 255, 0.4);
+    background: var(--accent-primary);
+    color: #0b0f14;
+    box-shadow: 0 0 20px rgba(31, 107, 255, 0.4);
 }
 
-@media (max-width: 768px) {
-    .navLinks {
+/* Mobile Menu Button */
+.mobileMenuBtn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    z-index: 1002;
+    padding: 0.5rem;
+}
+
+/* Mobile Menu Overlay */
+.mobileMenuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(11, 15, 20, 0.98);
+    backdrop-filter: blur(20px);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileNavLinks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+}
+
+.mobileNavLink {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobileNavLink:hover {
+    color: var(--accent-primary);
+}
+
+.mobileCtaButton {
+    background: var(--accent-primary);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    box-shadow: 0 0 20px rgba(31, 107, 255, 0.4);
+}
+
+@media (max-width: 850px) {
+    .navWrapper {
         display: none;
+    }
+
+    .ctaButton {
+        display: none;
+    }
+
+    .mobileMenuBtn {
+        display: block;
     }
 }

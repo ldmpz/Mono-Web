@@ -82,7 +82,7 @@ export default function ContactForm() {
     };
 
     return (
-        <section id="contact" className={styles.contactSection}>
+        <section id="contacto" className={styles.contactSection}>
             <div className={styles.container}>
                 <div className={styles.grid}>
 
