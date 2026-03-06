@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import { renderToBuffer } from '@react-pdf/renderer'
-import { InvoiceDocument } from '@/lib/pdf/InvoiceDocument'
-import React from 'react'
+
+// Force this route to be dynamic — never prerendered at build time.
+// Required because @react-pdf/renderer uses Node.js native modules.
+export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
     try {
@@ -47,7 +48,12 @@ export async function GET(request: NextRequest) {
             return NextResponse.json({ error: 'Client not found for this invoice' }, { status: 404 })
         }
 
-        // 2. Generate PDF buffer — create element properly for renderToBuffer
+        // 2. Dynamic imports to avoid webpack bundling issues with native modules
+        const React = (await import('react')).default
+        const { renderToBuffer } = await import('@react-pdf/renderer')
+        const { InvoiceDocument } = await import('@/lib/pdf/InvoiceDocument')
+
+        // Generate PDF buffer
         const element = React.createElement(InvoiceDocument, {
             invoice: {
                 invoice_number: invoice.invoice_number || `INV-${invoiceId.slice(0, 6).toUpperCase()}`,
