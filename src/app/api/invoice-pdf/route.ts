@@ -4,14 +4,16 @@ import { renderToBuffer } from '@react-pdf/renderer'
 import { InvoiceDocument } from '@/lib/pdf/InvoiceDocument'
 import React from 'react'
 
-// Admin client bypasses RLS for server-side generation
-const supabaseAdmin = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
-
 export async function GET(request: NextRequest) {
     try {
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+        const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+        if (!supabaseUrl || !supabaseKey) {
+            return NextResponse.json({ error: 'Supabase credentials missing' }, { status: 500 })
+        }
+
+        const supabaseAdmin = createClient(supabaseUrl, supabaseKey)
         const { searchParams } = new URL(request.url)
         const invoiceId = searchParams.get('id')
 
