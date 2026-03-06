@@ -11,9 +11,9 @@ export default function ContactForm() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        company: "",
-        message: "",
-        revenue: ""
+        phone: "",
+        subject: "",
+        message: ""
     });
 
     const handleSubmit = async (e: FormEvent) => {
@@ -29,7 +29,7 @@ export default function ContactForm() {
 
             if (response.ok) {
                 setStatus("success");
-                setFormData({ name: "", email: "", company: "", message: "", revenue: "" });
+                setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
             } else {
                 setStatus("error");
             }
@@ -134,13 +134,15 @@ export default function ContactForm() {
                                 <input
                                     type="text"
                                     placeholder="Teléfono"
-                                    value={formData.company}
-                                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                                    value={formData.phone}
+                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                     className={styles.input}
                                 />
                                 <input
                                     type="text"
                                     placeholder="Asunto"
+                                    value={formData.subject}
+                                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                                     className={styles.input}
                                 />
                             </motion.div>

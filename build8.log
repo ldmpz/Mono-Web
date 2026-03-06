@@ -1,0 +1,133 @@
+
+> ai-agency-site@0.1.0 build
+> next build
+
+   ▲ Next.js 15.1.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+
+[1m[33mwarn[39m[22m - The class `delay-[450ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;450ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[550ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;550ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[600ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;600ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[650ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;650ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[750ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;750ms&rsqb;` to silence this warning.
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+Failed to compile.
+
+./src/app/(dashboard)/crm/KanbanBoardWrapper.tsx
+19:62  Warning: 'currentUserRole' is defined but never used.  @typescript-eslint/no-unused-vars
+19:99  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+25:9  Error: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\danie\Desktop\Mono\src\app\(dashboard)\crm\KanbanBoardWrapper.tsx:25:9
+  23 |     // Setup for hydration issues with dnd
+  24 |     useEffect(() => {
+> 25 |         setIsMounted(true)
+     |         ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  26 |     }, [])
+  27 |
+  28 |     const onDragEnd = async (result: DropResult) => {  react-hooks/set-state-in-effect
+
+./src/app/(dashboard)/crm/page.tsx
+33:128  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./src/app/(dashboard)/finance/InvoicesTable.tsx
+7:79  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+17:18  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/(dashboard)/finance/page.tsx
+33:193  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+33:199  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+33:213  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+33:219  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./src/app/admin/dashboard/page.tsx
+6:68  Warning: 'Check' is defined but never used.  @typescript-eslint/no-unused-vars
+32:9  Error: Error: Cannot access variable before it is declared
+
+`fetchCards` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\danie\Desktop\Mono\src\app\admin\dashboard\page.tsx:32:9
+  30 |
+  31 |     useEffect(() => {
+> 32 |         fetchCards();
+     |         ^^^^^^^^^^ `fetchCards` accessed before it is declared
+  33 |     }, []);
+  34 |
+  35 |     const fetchCards = async () => {
+
+C:\Users\danie\Desktop\Mono\src\app\admin\dashboard\page.tsx:35:5
+  33 |     }, []);
+  34 |
+> 35 |     const fetchCards = async () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 36 |         setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |         const { data, error } = await supabase
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 47 |         setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 48 |     };
+     | ^^^^^^^ `fetchCards` is declared here
+  49 |
+  50 |     const handleLogout = async () => {
+  51 |         await supabase.auth.signOut();  react-hooks/immutability
+33:8  Warning: React Hook useEffect has a missing dependency: 'fetchCards'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+139:29  Error: Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\danie\Desktop\Mono\src\app\admin\dashboard\page.tsx:139:29
+  137 |         const file = e.target.files[0];
+  138 |         const fileExt = file.name.split('.').pop();
+> 139 |         const fileName = `${Math.random()}.${fileExt}`;
+      |                             ^^^^^^^^^^^^^ Cannot call impure function
+  140 |         const filePath = `${fileName}`;
+  141 |
+  142 |         const { error: uploadError } = await supabase.storage  react-hooks/purity
+199:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+247:63  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/admin/login/page.tsx
+4:10  Warning: 'useRouter' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/AnimatedCounter.tsx
+4:21  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/crm/KanbanBoard.tsx
+20:11  Warning: 'handleDragDrop' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+36:18  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/PricingClient.tsx
+139:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/components/ScrollReveal.tsx
+29:40  Warning: The ref value 'ref.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'ref.current' to a variable inside the effect, and use that variable in the cleanup function.  react-hooks/exhaustive-deps
+
+./src/lib/actions/crm.ts
+10:26  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/supabase/server.ts
+3:35  Warning: 'CookieOptions' is defined but never used.  @typescript-eslint/no-unused-vars
+23:30  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules

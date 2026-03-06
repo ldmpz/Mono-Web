@@ -1,0 +1,38 @@
+
+> ai-agency-site@0.1.0 build
+> next build
+
+   ▲ Next.js 15.1.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    11.2 kB         170 kB
+├ ○ /_not-found                          143 B           106 kB
+├ ○ /admin                               143 B           106 kB
+├ ○ /admin/dashboard                     58.4 kB         170 kB
+├ ○ /admin/login                         4.78 kB         154 kB
+├ ƒ /api/contact                         143 B           106 kB
+├ ƒ /crm                                 45.7 kB         195 kB
+├ ƒ /finance                             1.86 kB         151 kB
+└ ƒ /metrics                             1.81 kB         151 kB
++ First Load JS shared by all            106 kB
+  ├ chunks/4bd1b696-360ce2e83c8e31f4.js  53 kB
+  ├ chunks/517-dd5eddf9b59d1676.js       50.7 kB
+  └ other shared chunks (total)          2 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

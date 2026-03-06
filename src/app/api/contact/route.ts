@@ -1,15 +1,10 @@
-import { createClient } from "@supabase/supabase-js";
+import { createAdminClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
-
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { name, email, company, message, revenue } = body;
+        const { name, email, phone, subject, message } = body;
 
         if (!name || !email || !message) {
             return NextResponse.json(
@@ -18,15 +13,25 @@ export async function POST(req: Request) {
             );
         }
 
+        const supabase = await createAdminClient();
+
+        // Agregar el asunto dentro del cuerpo en notas de CRM
+        const combinedNotes = subject
+            ? `Asunto: ${subject}\n\nMensaje:\n${message}`
+            : `Mensaje:\n${message}`;
+
+        // Crear una nueva tarjeta en pipeline CRM
         const { error } = await supabase
-            .from("leads")
+            .from("clients")
             .insert([
                 {
-                    name,
-                    email,
-                    company,
-                    message,
-                    revenue // Mapping to the existing column if provided
+                    company_name: name,
+                    contact_name: name,
+                    email: email,
+                    phone: phone || null,
+                    notes: combinedNotes,
+                    source: "Landing Page",
+                    status: "lead"
                 }
             ]);
 

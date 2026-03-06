@@ -136,7 +136,7 @@ export default function PricingClient({ cards }: PricingClientProps) {
 
                             {card.image_url && (
                                 <div className={styles.imageWrapper}>
-                                    <img src={card.image_url} alt={card.title} />
+                                    <Image src={card.image_url} alt={card.title} fill style={{ objectFit: 'cover' }} />
                                 </div>
                             )}
 

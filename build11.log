@@ -1,0 +1,76 @@
+
+> ai-agency-site@0.1.0 build
+> next build
+
+   ▲ Next.js 15.1.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+
+[1m[33mwarn[39m[22m - The class `delay-[450ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;450ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[550ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;550ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[600ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;600ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[650ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;650ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[750ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;750ms&rsqb;` to silence this warning.
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+Failed to compile.
+
+./src/app/(dashboard)/crm/KanbanBoardWrapper.tsx
+26:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+34:9  Error: Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\danie\Desktop\Mono\src\app\(dashboard)\crm\KanbanBoardWrapper.tsx:34:9
+  32 |
+  33 |     useEffect(() => {
+> 34 |         setIsMounted(true)
+     |         ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  35 |     }, [])
+  36 |
+  37 |     const onDragEnd = async (result: DropResult) => {  react-hooks/set-state-in-effect
+
+./src/app/(dashboard)/finance/InvoicesTable.tsx
+27:18  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/admin/dashboard/page.tsx
+6:68  Warning: 'Check' is defined but never used.  @typescript-eslint/no-unused-vars
+200:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+248:63  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/admin/login/page.tsx
+4:10  Warning: 'useRouter' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/AnimatedCounter.tsx
+4:21  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/crm/KanbanBoard.tsx
+20:11  Warning: 'handleDragDrop' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+36:18  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/PricingClient.tsx
+139:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/components/ScrollReveal.tsx
+29:40  Warning: The ref value 'ref.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'ref.current' to a variable inside the effect, and use that variable in the cleanup function.  react-hooks/exhaustive-deps
+
+./src/lib/supabase/server.ts
+3:35  Warning: 'CookieOptions' is defined but never used.  @typescript-eslint/no-unused-vars
+23:30  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules

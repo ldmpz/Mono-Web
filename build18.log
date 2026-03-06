@@ -1,0 +1,70 @@
+
+> ai-agency-site@0.1.0 build
+> next build
+
+   ▲ Next.js 15.1.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|C:\Users\danie\Desktop\Mono\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[13].oneOf[10].use[2]!C:\Users\danie\Desktop\Mono\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[13].oneOf[10].use[3]!C:\Users\danie\Desktop\Mono\src\app\globals.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+Failed to compile.
+
+./src/app/globals.css:118:5
+Syntax error: C:\Users\danie\Desktop\Mono\src\app\globals.css The `hover:shadow-[0_0_30px_rgba(15,` class does not exist. If `hover:shadow-[0_0_30px_rgba(15,` is a custom class, make sure it is defined within a `@layer` directive.
+
+ [90m 116 | [39m  [90m/* ===== PREMIUM NEON BUTTON — dash actions ===== */[39m
+ [90m 117 | [39m  [33m.btn-premium[39m [33m{[39m
+[1m[31m>[39m[22m[90m 118 | [39m    [36m@apply[39m relative overflow-hidden bg-[33m[[39m[36mvar[39m[36m(--brand-neon)[39m[33m][39m text-black font-semibold rounded-lg px-5 py-2.5 transition-all duration-300 hover[33m:[39mscale-105 active[33m:[39mscale-95 hover[33m:[39mshadow-[33m[[39m[36m0_0_30px_rgba[39m[36m(15, 255, 80, 0.4)[39m[33m][39m[33m;[39m
+ [90m     | [39m    [1m[31m^[39m[22m
+ [90m 119 | [39m  [33m}[39m
+ [90m 120 | [39m
+
+./src/app/globals.css
+Syntax error: C:\Users\danie\Desktop\Mono\src\app\globals.css The `hover:shadow-[0_0_30px_rgba(15,` class does not exist. If `hover:shadow-[0_0_30px_rgba(15,` is a custom class, make sure it is defined within a `@layer` directive. (118:5)
+
+ [90m 116 | [39m  [90m/* ===== PREMIUM NEON BUTTON — dash actions ===== */[39m
+ [90m 117 | [39m  [33m.btn-premium[39m [33m{[39m
+[1m[31m>[39m[22m[90m 118 | [39m    [36m@apply[39m relative overflow-hidden bg-[33m[[39m[36mvar[39m[36m(--brand-neon)[39m[33m][39m text-black font-semibold rounded-lg px-5 py-2.5 transition-all duration-300 hover[33m:[39mscale-105 active[33m:[39mscale-95 hover[33m:[39mshadow-[33m[[39m[36m0_0_30px_rgba[39m[36m(15, 255, 80, 0.4)[39m[33m][39m[33m;[39m
+ [90m     | [39m    [1m[31m^[39m[22m
+ [90m 119 | [39m  [33m}[39m
+ [90m 120 | [39m
+
+    at tryRunOrWebpackError (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:314962)
+    at __webpack_require_module__ (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:131434)
+    at __nested_webpack_require_161179__ (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:130872)
+    at C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:131723
+    at symbolIterator (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\neo-async\async.js:1:14444)
+    at done (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\neo-async\async.js:1:14824)
+    at Hook.eval [as callAsync] (eval at create (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:13:9218), <anonymous>:15:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:13:6372)
+    at C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:130593
+    at symbolIterator (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\neo-async\async.js:1:14402)
+-- inner error --
+Syntax error: C:\Users\danie\Desktop\Mono\src\app\globals.css The `hover:shadow-[0_0_30px_rgba(15,` class does not exist. If `hover:shadow-[0_0_30px_rgba(15,` is a custom class, make sure it is defined within a `@layer` directive. (118:5)
+
+ [90m 116 | [39m  [90m/* ===== PREMIUM NEON BUTTON — dash actions ===== */[39m
+ [90m 117 | [39m  [33m.btn-premium[39m [33m{[39m
+[1m[31m>[39m[22m[90m 118 | [39m    [36m@apply[39m relative overflow-hidden bg-[33m[[39m[36mvar[39m[36m(--brand-neon)[39m[33m][39m text-black font-semibold rounded-lg px-5 py-2.5 transition-all duration-300 hover[33m:[39mscale-105 active[33m:[39mscale-95 hover[33m:[39mshadow-[33m[[39m[36m0_0_30px_rgba[39m[36m(15, 255, 80, 0.4)[39m[33m][39m[33m;[39m
+ [90m     | [39m    [1m[31m^[39m[22m
+ [90m 119 | [39m  [33m}[39m
+ [90m 120 | [39m
+
+    at Object.<anonymous> (C:\Users\danie\Desktop\Mono\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[13].oneOf[10].use[2]!C:\Users\danie\Desktop\Mono\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[13].oneOf[10].use[3]!C:\Users\danie\Desktop\Mono\src\app\globals.css:1:7)
+    at C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:955548
+    at Hook.eval [as call] (eval at create (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:13:8996), <anonymous>:7:1)
+    at Hook.CALL_DELEGATE [as _call] (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:13:6266)
+    at C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:131467
+    at tryRunOrWebpackError (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:314916)
+    at __webpack_require_module__ (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:131434)
+    at __nested_webpack_require_161179__ (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:130872)
+    at C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\webpack\bundle5.js:28:131723
+    at symbolIterator (C:\Users\danie\Desktop\Mono\node_modules\next\dist\compiled\neo-async\async.js:1:14444)
+
+Generated code for C:\Users\danie\Desktop\Mono\node_modules\next\dist\build\webpack\loaders\css-loader\src\index.js??ruleSet[1].rules[13].oneOf[10].use[2]!C:\Users\danie\Desktop\Mono\node_modules\next\dist\build\webpack\loaders\postcss-loader\src\index.js??ruleSet[1].rules[13].oneOf[10].use[3]!C:\Users\danie\Desktop\Mono\src\app\globals.css
+
+Import trace for requested module:
+./src/app/globals.css
+
+
+> Build failed because of webpack errors

@@ -20,13 +20,14 @@ export default function ScrollReveal({ children, className = "" }: { children: R
             }
         );
 
-        if (ref.current) {
-            observer.observe(ref.current);
+        const el = ref.current;
+        if (el) {
+            observer.observe(el);
         }
 
         return () => {
-            if (ref.current) {
-                observer.unobserve(ref.current);
+            if (el) {
+                observer.unobserve(el);
             }
         };
     }, []);

@@ -1,0 +1,65 @@
+
+> ai-agency-site@0.1.0 build
+> next build
+
+   ▲ Next.js 15.1.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+./src/app/admin/dashboard/page.tsx
+6:68  Warning: 'Check' is defined but never used.  @typescript-eslint/no-unused-vars
+200:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+248:63  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/app/admin/login/page.tsx
+4:10  Warning: 'useRouter' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/AnimatedCounter.tsx
+4:21  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/crm/KanbanBoard.tsx
+20:11  Warning: 'handleDragDrop' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+36:18  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/PricingClient.tsx
+139:37  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./src/components/ScrollReveal.tsx
+29:40  Warning: The ref value 'ref.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'ref.current' to a variable inside the effect, and use that variable in the cleanup function.  react-hooks/exhaustive-deps
+
+./src/lib/supabase/server.ts
+3:35  Warning: 'CookieOptions' is defined but never used.  @typescript-eslint/no-unused-vars
+23:30  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    14 kB           167 kB
+├ ○ /_not-found                          143 B           106 kB
+├ ○ /admin                               143 B           106 kB
+├ ○ /admin/dashboard                     58.7 kB         164 kB
+├ ○ /admin/login                         2.15 kB         108 kB
+├ ƒ /api/contact                         143 B           106 kB
+├ ƒ /crm                                 45.7 kB         195 kB
+├ ƒ /finance                             1.86 kB         151 kB
+└ ƒ /metrics                             1.81 kB         151 kB
++ First Load JS shared by all            106 kB
+  ├ chunks/4bd1b696-360ce2e83c8e31f4.js  53 kB
+  ├ chunks/517-dd5eddf9b59d1676.js       50.7 kB
+  └ other shared chunks (total)          2 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

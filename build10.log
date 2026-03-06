@@ -1,0 +1,40 @@
+
+> ai-agency-site@0.1.0 build
+> next build
+
+   ▲ Next.js 15.1.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+
+[1m[33mwarn[39m[22m - The class `delay-[450ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;450ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[550ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;550ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[600ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;600ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[650ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;650ms&rsqb;` to silence this warning.
+
+[1m[33mwarn[39m[22m - The class `delay-[750ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `delay-&lsqb;750ms&rsqb;` to silence this warning.
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/app/(dashboard)/finance/page.tsx:53:32
+Type error: Type '{ id: any; amount: any; due_date: any; status: any; payment_date: any; payment_method: any; clients: { company_name: any; }[]; }[]' is not assignable to type 'Invoice[]'.
+  Type '{ id: any; amount: any; due_date: any; status: any; payment_date: any; payment_method: any; clients: { company_name: any; }[]; }' is not assignable to type 'Invoice'.
+    Types of property 'clients' are incompatible.
+      Property 'company_name' is missing in type '{ company_name: any; }[]' but required in type '{ company_name: string; }'.
+
+[0m [90m 51 |[39m[0m
+[0m [90m 52 |[39m             [33m<[39m[33mdiv[39m className[33m=[39m[32m"glass-panel rounded-2xl p-6"[39m[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 53 |[39m                 [33m<[39m[33mInvoicesTable[39m initialInvoices[33m=[39m{invoices [33m||[39m []} [33m/[39m[33m>[39m[0m
+[0m [90m    |[39m                                [31m[1m^[22m[39m[0m
+[0m [90m 54 |[39m             [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m [90m 55 |[39m         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m [90m 56 |[39m     )[0m
