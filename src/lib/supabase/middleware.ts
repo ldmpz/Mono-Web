@@ -38,11 +38,12 @@ export async function updateSession(request: NextRequest) {
         request.nextUrl.pathname.startsWith('/crm') ||
         request.nextUrl.pathname.startsWith('/finance') ||
         request.nextUrl.pathname.startsWith('/metrics') ||
-        request.nextUrl.pathname.startsWith('/settings')
+        request.nextUrl.pathname.startsWith('/settings') ||
+        request.nextUrl.pathname.startsWith('/admin')
 
-    if (!user && isDashboardRoute) {
+    if (!user && isDashboardRoute && request.nextUrl.pathname !== '/admin/login') {
         const url = request.nextUrl.clone()
-        url.pathname = '/login'
+        url.pathname = '/admin/login'
         return NextResponse.redirect(url)
     }
 

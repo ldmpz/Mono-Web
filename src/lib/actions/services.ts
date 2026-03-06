@@ -55,19 +55,32 @@ export async function addClientService(formData: FormData) {
         throw new Error('Faltan datos requeridos')
     }
 
-    // 1. Create the service entry in the catalog
-    const { data: service, error: serviceError } = await supabase
+    // 1. Check if the service already exists in the catalog to avoid duplicates
+    let { data: service, error: serviceError } = await supabase
         .from('services')
-        .insert({
-            name: service_name,
-            description: description || null,
-            base_price: contract_value,
-            billing_type,
-        })
         .select('id')
-        .single()
+        .eq('name', service_name)
+        .eq('billing_type', billing_type)
+        .maybeSingle()
 
-    if (serviceError) throw new Error(serviceError.message)
+    if (!service) {
+        // Create new service entry if it doesn't exist
+        const { data: newService, error: insertError } = await supabase
+            .from('services')
+            .insert({
+                name: service_name,
+                description: description || null,
+                base_price: contract_value,
+                billing_type,
+            })
+            .select('id')
+            .single()
+
+        if (insertError) throw new Error(`Error creating service: ${insertError.message}`)
+        service = newService
+    }
+
+    if (!service) throw new Error('Failed to identify or create service')
 
     // 2. Link the service to the client
     const { error: linkError } = await supabase

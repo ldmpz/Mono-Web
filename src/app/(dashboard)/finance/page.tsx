@@ -7,7 +7,7 @@ export default async function FinancePage() {
     const supabase = await createClient()
 
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) redirect('/login')
+    if (!user) redirect('/admin/login')
 
     const { data: invoices, error } = await supabase
         .from('invoices')

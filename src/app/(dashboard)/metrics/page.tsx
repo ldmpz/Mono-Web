@@ -8,7 +8,7 @@ export default async function MetricsDashboardPage() {
     const supabase = await createClient()
 
     const { data: { user }, error: authError } = await supabase.auth.getUser()
-    if (authError || !user) redirect('/login')
+    if (authError || !user) redirect('/admin/login')
 
     const date = new Date()
     const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).toISOString()
