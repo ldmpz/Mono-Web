@@ -7,6 +7,16 @@ import { createBrowserSupabaseClient } from "@/lib/supabase-client"
 import TeamClient from './TeamClient'
 import { getTeamUsers } from '@/lib/actions/team'
 
+interface TeamUser {
+    id: string
+    full_name: string
+    email: string
+    role: string
+    modules?: string[]
+    is_active: boolean
+    created_at: string
+}
+
 const container = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.08 } }
@@ -71,7 +81,7 @@ export default function SettingsPage() {
     const [loading, setLoading] = useState(true)
     const [userData, setUserData] = useState<{ id: string, email: string, role: string, fullName: string }>({ id: '', email: '', role: 'Cargando...', fullName: '' })
     const [password, setPassword] = useState("")
-    const [allUsers, setAllUsers] = useState<any[]>([])
+    const [allUsers, setAllUsers] = useState<TeamUser[]>([])
 
     const supabase = createBrowserSupabaseClient()
 

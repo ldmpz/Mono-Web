@@ -6,7 +6,7 @@ import { createClient } from 'jsr:@supabase/supabase-js@2'
 
 Deno.serve(async (req) => {
     try {
-        const authHeader = req.headers.get('Authorization')
+        // const authHeader = req.headers.get('Authorization')
         console.log("Running Billing Orchestrator...")
 
         // Create a Supabase client with the Auth context of the user hitting the edge function

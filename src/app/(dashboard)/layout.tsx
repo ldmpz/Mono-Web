@@ -12,7 +12,6 @@ import {
     Settings,
     Zap,
     Shield,
-    Users,
     LogOut
 } from 'lucide-react'
 

@@ -175,7 +175,7 @@ export async function updateClientLead(clientId: string, data: {
     // Enforce null instead of empty string for UUID column
     if (data.assigned_to === '') {
         data.assigned_to = undefined;
-        (data as any).assigned_to = null;
+        (data as Record<string, unknown>).assigned_to = null;
     }
 
     const { error } = await supabase

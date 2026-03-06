@@ -1,0 +1,41 @@
+﻿
+C:\Users\danie\Desktop\Mono\check_db.js
+  1:12  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:26  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\danie\Desktop\Mono\src\app\(dashboard)\admin\ServicesEditor.tsx
+   66:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   72:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  183:45  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\danie\Desktop\Mono\src\app\(dashboard)\crm\ClientServicesPanel.tsx
+  66:33  warning  React Hook useEffect has a missing dependency: 'load'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\danie\Desktop\Mono\src\app\(dashboard)\layout.tsx
+  15:5  warning  'Users' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\danie\Desktop\Mono\src\app\(dashboard)\settings\TeamClient.tsx
+  60:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  90:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\danie\Desktop\Mono\src\app\(dashboard)\settings\page.tsx
+  74:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\danie\Desktop\Mono\src\lib\actions\crm.ts
+  178:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\danie\Desktop\Mono\src\lib\actions\team.ts
+  122:24  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\danie\Desktop\Mono\supabase\functions\billing-orchestrator\index.ts
+  9:15  warning  'authHeader' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\danie\Desktop\Mono\tailwind.config.js
+  12:5  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+C:\Users\danie\Desktop\Mono\tmp.js
+  1:26  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:16  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+Ô£û 16 problems (13 errors, 3 warnings)
+

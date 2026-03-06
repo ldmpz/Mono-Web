@@ -57,8 +57,9 @@ export default function TeamClient({ initialUsers, currentUserId }: { initialUse
                 await createUserTeam(formData)
             }
             window.location.reload()
-        } catch (error: any) {
-            setErrorMsg(error.message || "Error al guardar usuario.")
+        } catch (error: unknown) {
+            const errorMsg = error instanceof Error ? error.message : "Error al guardar usuario.";
+            setErrorMsg(errorMsg)
             setLoading(false)
         }
     }
@@ -87,8 +88,9 @@ export default function TeamClient({ initialUsers, currentUserId }: { initialUse
         try {
             await deleteUserTeam(userId)
             setUsers(users.filter(u => u.id !== userId))
-        } catch (error: any) {
-            alert("Hubo un error al eliminar: " + error.message)
+        } catch (error: unknown) {
+            const errorMsg = error instanceof Error ? error.message : "Hubo un error al eliminar.";
+            alert("Hubo un error al eliminar: " + errorMsg)
         } finally {
             setDeletingId(null)
         }
@@ -239,9 +241,9 @@ export default function TeamClient({ initialUsers, currentUserId }: { initialUse
                                     <div className="pt-2 border-t border-[var(--border-glass)]">
                                         <label className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-3">Accesos del Panel</label>
                                         <div className="grid grid-cols-2 gap-3">
-                                            {['crm', 'finance', 'metrics', 'settings', 'admin'].map(mod => {
+                                            {['crm', 'finance', 'metrics', 'admin', 'settings'].map(mod => {
                                                 const isChecked = formData.modules.includes(mod)
-                                                const labels: Record<string, string> = { crm: 'Pipeline CRM', finance: 'Facturación', metrics: 'Métricas', settings: 'Configuración', admin: 'Contenido Web' }
+                                                const labels: Record<string, string> = { crm: 'Pipeline CRM', finance: 'Facturación', metrics: 'Métricas', admin: 'Contenido Web', settings: 'Configuración' }
                                                 return (
                                                     <label key={mod} className="flex items-center gap-2 cursor-pointer group">
                                                         <div className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${isChecked ? 'bg-[var(--brand-neon)] border-[var(--brand-neon)] text-black' : 'border-[var(--border-glass)] text-transparent group-hover:border-[var(--brand-neon)]/50'}`}>

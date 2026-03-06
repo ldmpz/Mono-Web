@@ -63,13 +63,13 @@ export default function ServicesEditor() {
         setIsEditing(true);
     };
 
-    const handleMove = async (service: any, direction: 'left' | 'right') => {
+    const handleMove = async (service: WebService & { active?: boolean, display_order?: number }, direction: 'left' | 'right') => {
         const index = services.findIndex(c => c.id === service.id);
         const targetIndex = direction === 'left' ? index - 1 : index + 1;
 
         if (targetIndex < 0 || targetIndex >= services.length) return;
 
-        const newServices = [...services] as any[];
+        const newServices = [...services] as (WebService & { active?: boolean, display_order?: number })[];
         [newServices[index], newServices[targetIndex]] = [newServices[targetIndex], newServices[index]];
         setServices(newServices);
 
@@ -180,7 +180,7 @@ export default function ServicesEditor() {
                 </div>
             ) : (
                 <motion.div variants={container} initial="hidden" animate="show" className={styles.grid}>
-                    {services.map((service: any) => (
+                    {services.map((service: WebService & { active?: boolean, display_order?: number }) => (
                         <motion.div
                             key={service.id}
                             variants={item}

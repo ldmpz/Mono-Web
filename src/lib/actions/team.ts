@@ -119,7 +119,7 @@ export async function updateUserTeam(userId: string, data: { fullName?: string, 
 
     const adminAuthClient = await createAdminClient()
 
-    const authUpdates: any = {}
+    const authUpdates: Record<string, unknown> = {}
     if (data.email) authUpdates.email = data.email
     if (data.password) authUpdates.password = data.password
     if (data.fullName) authUpdates.user_metadata = { full_name: data.fullName }

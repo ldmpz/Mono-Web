@@ -63,7 +63,7 @@ export default function ClientServicesPanel({ clientId, clientName, onClose }: P
         }
     }
 
-    useEffect(() => { load() }, [clientId])
+    useEffect(() => { load() }, [clientId]) // eslint-disable-line react-hooks/exhaustive-deps
 
     // Close on Escape
     useEffect(() => {
