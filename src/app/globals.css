@@ -54,12 +54,14 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--border-glass);
+    background-color: var(--brand-neon);
     border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: #1a8fff;
+    box-shadow: 0 0 14px rgba(0, 123, 255, 0.9);
   }
 }
 
