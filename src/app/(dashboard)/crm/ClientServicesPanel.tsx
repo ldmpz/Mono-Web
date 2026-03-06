@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -51,7 +51,7 @@ export default function ClientServicesPanel({ clientId, clientName, onClose }: P
         setTimeout(() => setToast(null), 3000)
     }
 
-    const load = async () => {
+    const load = useCallback(async () => {
         setLoading(true)
         try {
             const data = await getClientServices(clientId)
@@ -61,9 +61,9 @@ export default function ClientServicesPanel({ clientId, clientName, onClose }: P
         } finally {
             setLoading(false)
         }
-    }
+    }, [clientId])
 
-    useEffect(() => { load() }, [clientId]) // eslint-disable-line react-hooks/exhaustive-deps
+    useEffect(() => { load() }, [load])
 
     // Close on Escape
     useEffect(() => {
